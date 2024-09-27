@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database import Base, engine
-from models import Aluno
+from models import Aluno as AlunoModel  # Evita conflito de nome
 from schemas import AlunoCreate, Aluno
-from database import SessionLocal, engine
+from database import SessionLocal
 
 app = FastAPI()
 
-#inicia a tabela
+# Inicia a tabela
 Base.metadata.create_all(bind=engine)
 
 # Função que gerencia a sessão de banco de dados
@@ -20,47 +20,42 @@ def get_db():
     finally:
         db.close()
 
-#adicionar aluno
+# Adicionar aluno
 @app.post("/alunos", response_model=Aluno)
-def post_aluno(aluno: AlunoCreate, db: Session = Depends(get_db)):
-    aluno = Aluno(nome=aluno.nome, email=aluno.email)
-    db.add(aluno)
+def post_aluno(aluno_data: AlunoCreate, db: Session = Depends(get_db)):
+    # Cria instância do modelo SQLAlchemy
+    novo_aluno = AlunoModel(nome=aluno_data.nome, email=aluno_data.email)
+    db.add(novo_aluno)
     db.commit()
-    db.refresh(aluno)
-    return aluno
+    db.refresh(novo_aluno)  # Obtém o id gerado automaticamente pelo banco de dados
+    return novo_aluno  # Retorna o objeto com o id incluído
 
-
-#Buscar um aluno
+# Buscar um aluno
 @app.get("/alunos/{aluno_id}", response_model=Aluno)
 def read_aluno(aluno_id: int, db: Session = Depends(get_db)):
-    aluno = db.query(Aluno).filter(Aluno.id == aluno_id).first()
+    aluno = db.query(AlunoModel).filter(AlunoModel.id == aluno_id).first()
     if aluno is None:
         raise HTTPException(status_code=404, detail="Aluno não encontrado")
     return aluno
 
-
-#Atualizar um aluno
+# Atualizar um aluno
 @app.put("/alunos/{aluno_id}", response_model=Aluno)
 def update_aluno(aluno_id: int, aluno_data: AlunoCreate, db: Session = Depends(get_db)):
-    aluno = db.query(Aluno).filter(Aluno.id == aluno_id).first()
+    aluno = db.query(AlunoModel).filter(AlunoModel.id == aluno_id).first()
     if aluno is None:
         raise HTTPException(status_code=404, detail="Aluno não encontrado.")
-    aluno.name = aluno_data.nome
+    aluno.nome = aluno_data.nome  # Corrigido de "aluno.name" para "aluno.nome"
     aluno.email = aluno_data.email
     db.commit()
     db.refresh(aluno)
     return aluno
 
-
-#deletar aluno
-@app.delete("/alunos/{aluno_id}", response_model=Aluno)
+# Deletar aluno
+@app.delete("/alunos/{aluno_id}", response_model=dict)
 def delete_aluno(aluno_id: int, db: Session = Depends(get_db)):
-    aluno = db.query(Aluno).filter(Aluno.id == aluno_id).first()
+    aluno = db.query(AlunoModel).filter(AlunoModel.id == aluno_id).first()
     if aluno is None:
-        raise HTTPException(status_code=404,detail="Aluno não encontrado.")
+        raise HTTPException(status_code=404, detail="Aluno não encontrado.")
     db.delete(aluno)
     db.commit()
-    db.refresh(aluno)
     return {"detail": "Aluno deletado com sucesso"}
-
-
