@@ -42,6 +42,5 @@ cd projeto-api-alunos
 |----------|-----------------------|-------------------------------------|
 | _POST_   | `/alunos`             | Cria um novo aluno                  |
 | _GET_    | `/alunos/{aluno_id}`  | Busca um aluno pelo ID              |
-| _GET_    | `/aluno/all/`         | Lista todos os alunos
 | _PUT_    | `/alunos/{aluno_id}`  | Atualiza as informações de um aluno |
 | _DELETE_ | `/alunos/{aluno_id}`  | Deleta um aluno                     |
