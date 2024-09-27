@@ -17,7 +17,6 @@ Este projeto é uma API RESTful de gerenciamento de alunos, implementada usando 
 - **SQLAlchemy**
 - **Pydantic**
 - **PostgreSQL**
-- **Docker** (opcional)
   
 ## Pré-requisitos
 
