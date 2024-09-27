@@ -38,6 +38,7 @@ def read_aluno(aluno_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Aluno não encontrado")
     return aluno
 
+
 # Atualizar um aluno
 @app.put("/alunos/{aluno_id}", response_model=Aluno)
 def update_aluno(aluno_id: int, aluno_data: AlunoCreate, db: Session = Depends(get_db)):
