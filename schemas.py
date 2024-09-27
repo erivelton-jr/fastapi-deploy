@@ -14,7 +14,7 @@ class AlunoCreate(AlunoBase):
 class Aluno(AlunoBase):
     id: int
 
-    class Config:
+    class ConfigDict:
         from_attributes = True
 
 

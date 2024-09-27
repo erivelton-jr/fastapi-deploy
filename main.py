@@ -60,3 +60,8 @@ def delete_aluno(aluno_id: int, db: Session = Depends(get_db)):
     db.delete(aluno)
     db.commit()
     return {"detail": "Aluno deletado com sucesso"}
+
+
+@app.get("/")
+def root_page():
+    return {"Hello": "World"}
