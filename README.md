@@ -37,9 +37,18 @@ cd projeto-api-alunos
 ---
 ## Rotas Disponíveis
 
-| Método   | Rota	                 | Descrição                           
-|----------|-----------------------|-------------------------------------|
-| _POST_   | `/alunos`             | Cria um novo aluno                  |
-| _GET_    | `/alunos/{aluno_id}`  | Busca um aluno pelo ID              |
-| _PUT_    | `/alunos/{aluno_id}`  | Atualiza as informações de um aluno |
-| _DELETE_ | `/alunos/{aluno_id}`  | Deleta um aluno                     |
+| Método   | Rota	                 | Descrição                            |
+|----------|-----------------------|--------------------------------------|
+| _POST_   | `/login`              | Faz login na API                     |
+| _POST_   | `/alunos`             | Cria um novo aluno                   |
+| _GET_    | `/alunos/{aluno_id}`  | Busca um aluno pelo ID               |
+| _GET_    | `/lista-alunos/`      | Lista todos os alunos                |
+| _PUT_    | `/alunos/{aluno_id}`  | Atualiza as informações de um aluno  |
+| _DELETE_ | `/alunos/{aluno_id}`  | Deleta um aluno                      |
+
+---
+
+## Updates
+
+- Implantação de lista de todos os alunos
+- Sistema de login para alteração do banco de dados

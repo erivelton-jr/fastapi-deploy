@@ -2,8 +2,8 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
-from database import Base
-from main import app, get_db
+from app.database import Base
+from app.main import app, get_db
 
 
 # URL de conexão para o banco de dados de teste
@@ -21,7 +21,6 @@ def override_get_db():
         yield db
     finally:
         db.close()
-
 
 
 app.dependency_overrides[get_db] = override_get_db
