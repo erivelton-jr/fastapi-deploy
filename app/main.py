@@ -3,11 +3,10 @@ import secrets
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-from database import Base, engine
-from models import Aluno as AlunoModel  # Evita conflito de nome
-from oauth import get_current_user
-from schemas import AlunoCreate, Aluno
-from database import SessionLocal
+from app.database import Base, engine, SessionLocal
+from app.models import Aluno as AlunoModel
+from app.oauth import get_current_user
+from app.schemas import AlunoCreate, Aluno
 from typing import List
 
 app = FastAPI()
@@ -25,12 +24,14 @@ def get_db():
 
 
 #Parafazer login na api
-@app.post("/login")
+@app.post("/token")
 def login(login_data: OAuth2PasswordRequestForm = Depends()):
-    correct_username = secrets.compare_digest(login_data.username, "<USUARIO>")
-    correct_password = secrets.compare_digest(login_data.password, "<SENHA>")
-    if not correct_password and correct_username:
+    correct_username = secrets.compare_digest(login_data.username, "erivelton")
+    correct_password = secrets.compare_digest(login_data.password, "senha")
+    if not (correct_password and correct_username):
         raise HTTPException(status_code=400, detail="Usuario/Senha incorretos.")
+
+    return {"access_token": login_data.username, "token_type": "bearer"}
 
 
 #Pagina inicial da API

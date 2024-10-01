@@ -17,6 +17,7 @@ Este projeto é uma API RESTful de gerenciamento de alunos, implementada usando 
 - **SQLAlchemy**
 - **Pydantic**
 - **PostgreSQL**
+- **Docker e Docker Compose**
   
 ## Pré-requisitos
 
@@ -52,3 +53,4 @@ cd projeto-api-alunos
 
 - Implantação de lista de todos os alunos
 - Sistema de login para alteração do banco de dados
+- Containerização da api e do banco de dados.
