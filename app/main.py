@@ -26,7 +26,7 @@ def get_db():
 #Parafazer login na api
 @app.post("/token")
 def login(login_data: OAuth2PasswordRequestForm = Depends()):
-    correct_username = secrets.compare_digest(login_data.username, "erivelton")
+    correct_username = secrets.compare_digest(login_data.username, "usuario")
     correct_password = secrets.compare_digest(login_data.password, "senha")
     if not (correct_password and correct_username):
         raise HTTPException(status_code=400, detail="Usuario/Senha incorretos.")

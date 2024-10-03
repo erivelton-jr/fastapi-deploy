@@ -1,5 +1,8 @@
 # Base image
-FROM python:3.12.3
+FROM python:3.12.6-alpine3.20
+
+# Instalar dependências necessárias no sistema operacional
+RUN apk add --no-cache gcc musl-dev libpq-dev
 
 # Definir diretório de trabalho dentro do container
 WORKDIR /app
