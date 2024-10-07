@@ -51,6 +51,7 @@ jobs:
         with:
           images: ${{ env.IMAGE_NAME }}
           tags: |
+            type=ref,event=tag
             type=semver,pattern={{version}}
 
       - name: Build and push Docker image
