@@ -10,6 +10,9 @@ WORKDIR /app
 # Copiar arquivo de dependências para o container
 COPY requirements.txt .
 
+#Atualizando pip para evitar vulnerabilidades
+RUN python -m pip install --upgrade pip
+
 # Instalar dependências
 RUN pip install --no-cache-dir -r requirements.txt
 

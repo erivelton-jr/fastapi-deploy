@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
   
     tags: 
-    - 'v*.*.*'
+    - "v*.*.*"
   pull_request:
     branches: [ "main" ]
 
@@ -51,7 +51,6 @@ jobs:
         with:
           images: ${{ env.IMAGE_NAME }}
           tags: |
-            type=ref,event=branch
             type=semver,pattern={{version}}
 
       - name: Build and push Docker image
