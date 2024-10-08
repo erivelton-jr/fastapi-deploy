@@ -1,6 +1,7 @@
 # Projeto de API de Alunos com FastAPI e PostgreSQL
 
 Este projeto é uma API RESTful de gerenciamento de alunos, implementada usando [FastAPI](https://fastapi.tiangolo.com/) e conectada a um banco de dados PostgreSQL. A API permite adicionar, buscar, atualizar e deletar alunos, com autenticação para operações de alteração.
+O Projeto também conta com a conteinerização da API e CI utilizando GitHub Actions para o DockerHub.
 
 ## Funcionalidades
 
@@ -51,6 +52,7 @@ cd projeto-api-alunos
 
 ## Updates
 
-- Implantação de lista de todos os alunos
-- Sistema de login para alteração do banco de dados
-- Containerização da api e do banco de dados.
+- _Implantação de lista de todos os alunos_
+- _Sistema de login para alteração do banco de dados_
+- _Containerização da api e do banco de dados._
+- _Docker CI utilizado Github Actions_ 
