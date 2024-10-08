@@ -78,7 +78,7 @@ jobs:
         run: exit 1
 
       - name: Push Docker image to registry (only if Trivy passes)
-        if: success() && github_name != 'pull request'
+        if: success() && github.event_name != 'pull request'
         uses: docker/build-push-action@v6
         with:
           context: .
