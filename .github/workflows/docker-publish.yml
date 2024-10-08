@@ -72,7 +72,7 @@ jobs:
           severity: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
           ignore-unfixed: 'true'
           format: 'table'
-        continue-on-error: 'true'
+        continue-on-error: true
 
       - name: Fail if vulnerability found
         if: failure()
