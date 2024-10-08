@@ -36,5 +36,5 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKER_USERNAME }}fastapiproject-app:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/fastapiproject-app:latest
 
