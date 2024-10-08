@@ -13,6 +13,8 @@ COPY requirements.txt .
 #Atualizando pip para evitar vulnerabilidades
 RUN python -m pip install --no-cache-dir --upgrade pip
 
+RUN python -m pip check
+
 # Instalar dependências
 RUN pip install --no-cache-dir -r requirements.txt
 
