@@ -40,3 +40,10 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/fastapiproject-app:latest
             ${{ secrets.DOCKER_USERNAME }}/fastapiproject-app:${{ github.sha }}
 
+      - name: Trivy scan
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: ${{ secrets.DOCKER_USERNAME }}/fastapiproject-app:latest
+          severity: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
+          ignore-unfixed: 'true'
+
