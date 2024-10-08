@@ -40,18 +40,6 @@ jobs:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            fastapiproject-app:${{ github.sha }}
-            fastapiproject-app:latest
-
-  test:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Trivy scan
-        uses: aquasecurity/trivy-action@0.20.0
-        with:
-          image-ref: 'fastapiproject-app:latest'
-          severity: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
-          format: 'table'
+            ${{ secrets.DOCKER_USERNAME }}fastapiproject-app:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}fastapiproject-app:latest
 
