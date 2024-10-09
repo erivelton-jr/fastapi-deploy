@@ -39,7 +39,11 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/fastapiproject-app:latest
             ${{ secrets.DOCKER_USERNAME }}/fastapiproject-app:${{ github.sha }}
+  scan:
+    runs-on: ubuntu-latest
+    needs: build
 
+    steps:
       - name: Trivy scan
         uses: aquasecurity/trivy-action@0.20.0
         with:
