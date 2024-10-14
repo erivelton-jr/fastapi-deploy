@@ -6,6 +6,7 @@ on:
 
   pull_request:
     branches: [ "main" ]
+    types: [opened, synchronize, reopened]
 
 env:
   REGISTRY: docker.io
@@ -55,7 +56,7 @@ jobs:
 
   code_analysis:
     runs-on: ubuntu-latest
-    needs: scan
+    needs: build
 
     steps:
       - name: SonaCloud Scan
