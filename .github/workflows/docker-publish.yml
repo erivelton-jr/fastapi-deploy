@@ -65,7 +65,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=fastapi-deploy
-            -Dsonar.organization=erivelton-jr-teste-sonar
+            -Dsonar.organization=erivelton-jr
             -Dsonar.python.coverage.reportPaths=coverage.xml
 
 
