@@ -62,6 +62,11 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=fastapi-deploy
+            -Dsonar.organization=erivelton-jr-teste-sonar
+            -Dsonar.python.coverage.reportPaths=coverage.xml
 
 
 
