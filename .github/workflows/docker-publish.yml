@@ -60,15 +60,9 @@ jobs:
 
     steps:
       - name: SonaCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: sonarsource/sonarcloud-github-action@2.1.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=fastapi-deploy
-            -Dsonar.organization=erivelton-jr
-            -Dsonar.python.coverage.reportPaths=coverage.xml
 
 
 
