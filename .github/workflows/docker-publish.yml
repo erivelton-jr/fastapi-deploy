@@ -64,10 +64,10 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with: >
-          -Dsonar.projectKey=erivelton-jr_fastapi-deploy \
-          -Dsonar.organization=erivelton-jr \
-          -Dsonar.sources=. \
-          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.projectKey=erivelton-jr_fastapi-deploy 
+          -Dsonar.organization=erivelton-jr 
+          -Dsonar.sources=. 
+          -Dsonar.host.url=https://sonarcloud.io 
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
 
