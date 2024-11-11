@@ -59,8 +59,8 @@ jobs:
     needs: build
 
     steps:
-      - name: SonaCloud Scan
-        uses: sonarsource/sonarcloud-github-action@2.1.0
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v3.1.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
